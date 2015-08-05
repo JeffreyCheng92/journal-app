@@ -20,6 +20,7 @@ Journal.Views.PostForm = Backbone.View.extend({
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
     this.model.save(formData, {
+      // wait: true,
       success: function(model){
         this.collection.add(model);
         Backbone.history.navigate("/posts/" + model.id, {trigger: true} );

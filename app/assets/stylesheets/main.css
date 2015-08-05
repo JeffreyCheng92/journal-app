@@ -1,0 +1,9 @@
+.root .sidebar {
+  float: left;
+  margin: 20px;
+}
+
+.root .content {
+  float:left;
+  margin: 20px;
+}

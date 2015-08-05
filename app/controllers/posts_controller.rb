@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    sleep 2
     @post = Post.find(params[:id])
 
     if @post.update(post_params)

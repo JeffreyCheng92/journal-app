@@ -9,19 +9,16 @@ Journal.Routers.PostsRouter = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
     this.postsCollection = options.collection;
-    // debugger;
-    // Add collection maybe?
+    this.hasIndex = false;
   },
 
   PostsIndex: function(){
-    // debugger
-    // Add collection by passing into router initliaze?
     var view = new Journal.Views.PostsIndex({collection: this.postsCollection});
-    this.swap(view);
+    this.$rootEl.find('.sidebar').html(view.$el);
+    this.hasIndex = true;
   },
 
   PostShow: function(id){
-    // debugger;
     var post = this.postsCollection.getOrFetch(id);
     var view = new Journal.Views.PostShow({ model: post});
     this.swap(view);
@@ -41,10 +38,14 @@ Journal.Routers.PostsRouter = Backbone.Router.extend({
   },
 
   swap: function(view){
+    if (!this.hasIndex) {
+      this.PostsIndex();
+    }
+
     if (this._view){
       this._view.remove();
     }
     this._view = view;
-    this.$rootEl.html(this._view.$el);
+    this.$rootEl.find(".content").html(this._view.$el);
   }
 })
