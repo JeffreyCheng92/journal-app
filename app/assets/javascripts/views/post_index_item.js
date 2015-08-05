@@ -4,7 +4,8 @@ Journal.Views.PostIndexItem = Backbone.View.extend({
   className: "posts-list-item",
 
   events: {
-    "click button.delete-button": "deletePostIndexItem"
+    "click button.delete-button": "deletePostIndexItem",
+    "click a": "selectPostFromIndex"
   },
 
   initialize: function(options){
@@ -20,6 +21,12 @@ Journal.Views.PostIndexItem = Backbone.View.extend({
     event.preventDefault();
     this.model.destroy();
     this.remove();
+  },
+
+  selectPostFromIndex: function(event) {
+    event.preventDefault();
+    var id = this.model.get("id");
+    Backbone.history.navigate('/posts/' + id, {trigger: true});
   }
 
 })
