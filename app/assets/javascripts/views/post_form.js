@@ -25,7 +25,5 @@ Journal.Views.PostForm = Backbone.View.extend({
         Backbone.history.navigate("/posts/" + model.id, {trigger: true} );
       }.bind(this)
     });
-
   }
-
 });
