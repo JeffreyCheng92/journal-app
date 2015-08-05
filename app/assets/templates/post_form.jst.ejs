@@ -1,0 +1,12 @@
+<form class="data-form">
+  <h3><%= title %></h3>
+  <br>
+  Title: <input type="text" name="post[title]" value="<%= post.escape('title') %>">
+
+  Body:
+  <br>
+  <textarea name="post[body]" rows="50" cols="100"><%= post.escape('body') %></textarea>
+  <br>
+
+  <input type="submit" value="Submit!">
+</form>

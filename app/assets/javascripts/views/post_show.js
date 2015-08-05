@@ -7,7 +7,8 @@ Journal.Views.PostShow = Backbone.View.extend({
   },
 
   events: {
-    "click .back-button": "backToIndex"
+    "click .back-button": "backToIndex",
+    "click .edit-button": "goToEdit"
   },
 
   render: function(){
@@ -18,6 +19,11 @@ Journal.Views.PostShow = Backbone.View.extend({
   backToIndex: function(event) {
     event.preventDefault();
     Backbone.history.navigate("", {trigger: true});
+  },
+
+  goToEdit: function(event) {
+    event.preventDefault();
+    Backbone.history.navigate("/posts/" + this.model.id + "/edit", {trigger: true});
   }
 
 });

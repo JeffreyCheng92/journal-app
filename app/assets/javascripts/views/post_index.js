@@ -1,6 +1,6 @@
 Journal.Views.PostsIndex = Backbone.View.extend({
   template: JST["post_index"],
-  tagName: "ul",
+  tagName: "div",
   className: "posts-list",
 
   initialize: function(options) {
@@ -10,16 +10,18 @@ Journal.Views.PostsIndex = Backbone.View.extend({
   },
 
   render: function() {
-    var thisView = this;
-    // debugger
-    this.$el.empty();
-    thisView.collection.each(function(post){
+    this.$el.html(this.template());
+    this.collection.each(function(post){
       var view = new Journal.Views.PostIndexItem({model: post});
-      thisView.$el.append(view.render().$el);
-    })
+      this.$('ul').append(view.render().$el);
+    }.bind(this));
 
     return this;
   },
+
+  createNewPost: function(){
+
+  }
 
 
 
