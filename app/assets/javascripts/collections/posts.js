@@ -6,10 +6,16 @@ Journal.Collections.Posts = Backbone.Collection.extend({
     // debugger;
     var post = this.get(id);
     if(!post){
-      var post = new Journal.Models.Post({id: id});
-      this.add(post);
+      post = new Journal.Models.Post({id: id});
+      post.fetch({
+        success: function () {
+          this.add(post, { merge: true });
+        }.bind(this)
+      });
+      // this.add(post);
+    } else {
+      post.fetch();
     }
-    post.fetch();
     return post;
   }
 })

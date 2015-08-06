@@ -4,8 +4,8 @@ Journal.Views.PostsIndex = Backbone.View.extend({
   className: "posts-list",
 
   initialize: function(options) {
-    this.listenTo(this.collection, "sync remove reset", this.render.bind(this));
-    this.collection.fetch({reset: true});
+    this.listenTo(this.collection, "sync remove reset", this.render);
+    // this.collection.fetch({reset: true});
   },
 
   render: function() {
@@ -16,12 +16,6 @@ Journal.Views.PostsIndex = Backbone.View.extend({
     }.bind(this));
 
     return this;
-  },
-
-  createNewPost: function(){
-
   }
-
-
 
 });

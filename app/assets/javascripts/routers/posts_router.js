@@ -13,6 +13,7 @@ Journal.Routers.PostsRouter = Backbone.Router.extend({
   },
 
   PostsIndex: function(){
+    this.postsCollection.fetch();
     var view = new Journal.Views.PostsIndex({collection: this.postsCollection});
     this.$rootEl.find('.sidebar').html(view.$el);
     this.hasIndex = true;
@@ -20,7 +21,9 @@ Journal.Routers.PostsRouter = Backbone.Router.extend({
 
   PostShow: function(id){
     var post = this.postsCollection.getOrFetch(id);
-    var view = new Journal.Views.PostShow({ model: post});
+    var view = new Journal.Views.PostShow({
+      model: post
+    });
     this.swap(view);
   },
 

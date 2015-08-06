@@ -29,9 +29,4 @@ Journal.Views.PostIndexItem = Backbone.View.extend({
     Backbone.history.navigate('/posts/' + id, {trigger: true});
   }
 
-  // editPostIndexItem: function(event){
-  //   event.preventDefault();
-  //   Backbone.history.navigate('/posts/' + this.model.id + "/edit", {trigger: true})
-  // }
-
 })
